@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lord's Mobile Complete Beginner to Pro Guide - Zero to Mastery</title>
+    <meta name="description" content="Ultimate Lord's Mobile guide for beginners. Learn everything from basic setup to advanced strategies, building tips, troop management, and resource allocation.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #9c27b0;
+            --secondary: #7b1fa2;
+            --accent: #69f0ae;
+            --dark: #1a1a2e;
+            --light: #f5f5f5;
+            --gray: #6c757d;
+            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            --gradient-alt: linear-gradient(135deg, #ff4081 0%, #7c4dff 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: var(--light);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--light);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .logo i {
+            color: var(--accent);
+            font-size: 32px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        nav a:hover {
+            color: var(--accent);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            background: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 26, 46, 0.85);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, var(--accent), #29b6f6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            color: #e1e1e1;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--gradient);
+            color: white;
+            padding: 16px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 10px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(156, 39, 176, 0.4);
+        }
+        
+        .btn-alt {
+            background: var(--gradient-alt);
+        }
+        
+        /* Content Sections */
+        .section-title {
+            text-align: center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.8rem;
+            margin: 80px 0 50px;
+            color: var(--light);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .section-title span {
+            background: linear-gradient(to right, var(--accent), #29b6f6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .guide-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .guide-section:hover {
+            transform: translateY(-5px);
+        }
+        
+        .guide-section h3 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: var(--accent);
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .guide-section p {
+            margin-bottom: 20px;
+            color: #e1e1e1;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .guide-section ul, .guide-section ol {
+            margin-left: 30px;
+            margin-bottom: 25px;
+        }
+        
+        .guide-section li {
+            margin-bottom: 12px;
+            color: #e1e1e1;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        /* Tips Grid */
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .tip-card {
+            background: rgba(26, 26, 46, 0.7);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .tip-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .tip-icon {
+            font-size: 50px;
+            margin-bottom: 25px;
+            color: var(--accent);
+        }
+        
+        .tip-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--light);
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        /* Table Styles */
+        .resource-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 40px 0;
+            background: rgba(26, 26, 46, 0.7);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .resource-table th, .resource-table td {
+            padding: 18px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .resource-table th {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .resource-table tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        /* FAQ Section */
+        .faq-container {
+            margin: 50px 0;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            background: rgba(26, 26, 46, 0.7);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .faq-question {
+            padding: 25px;
+            background: var(--secondary);
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.2rem;
+        }
+        
+        .faq-answer {
+            padding: 25px;
+            color: #e1e1e1;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            display: none;
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(10, 10, 20, 0.95);
+            padding: 80px 0 40px;
+            margin-top: 80px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: var(--accent);
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column a {
+            color: #b8b8ff;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 1.1rem;
+        }
+        
+        .footer-column a:hover {
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50%;
+            transition: transform 0.3s;
+            font-size: 20px;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #b8b8ff;
+            font-size: 1.1rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .section-title {
+                font-size: 2.4rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 15px 0;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .guide-section {
+                padding: 25px;
+            }
+            
+            .footer-content {
+                gap: 30px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                padding: 14px 28px;
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .guide-section h3 {
+                font-size: 1.6rem;
+            }
+            
+            .tip-card {
+                padding: 20px;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animated {
+            animation: fadeIn 1s ease-out;
+        }
+        
+        /* Progress Bar */
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: transparent;
+            z-index: 1001;
+        }
+        
+        .progress-bar {
+            height: 4px;
+            background: var(--gradient);
+            width: 0%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <i class="fas fa-crown"></i>
+                    LordsMastery
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="#basics">Basics</a></li>
+                        <li><a href="#building">Building</a></li>
+                        <li><a href="#troops">Troops</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                        <li><a href="#tips">Pro Tips</a></li>
+                    </ul>
+                    <button class="mobile-menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Lord's Mobile: Zero to Mastery Guide</h1>
+                <p>Your ultimate complete A to Z guide for mastering Lord's Mobile. Learn everything from basic setup to advanced strategies and dominate the battlefield!</p>
+                <div>
+                    <a href="#basics" class="btn">Start Learning</a>
+                    <a href="#tips" class="btn btn-alt">Pro Strategies</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Basics Section -->
+    <section id="basics" class="container">
+        <h2 class="section-title">Getting <span>Started</span></h2>
+        
+        <div class="guide-section animated">
+            <h3>What is Lord's Mobile?</h3>
+            <p>Lord's Mobile is a massively multiplayer online real-time strategy game where you build your kingdom, train troops, form alliances, and battle players from around the world. With over 100 million downloads, it's one of the most popular mobile MMO strategy games available.</p>
+        </div>
+        
+        <div class="guide-section animated">
+            <h3>Starting Your Journey</h3>
+            <p>When you first start playing Lord's Mobile, follow these essential steps to build a strong foundation:</p>
+            <ol>
+                <li><strong>Complete the tutorial</strong> - It teaches the basic mechanics and rewards you with valuable resources</li>
+                <li><strong>Choose your starter kingdom carefully</strong> - Newer kingdoms are better for beginners as they have fewer established powerful players</li>
+                <li><strong>Select a good name for your castle</strong> - You can't change it later, so choose wisely</li>
+                <li><strong>Follow the quests</strong> - They provide valuable rewards and guidance for progression</li>
+                <li><strong>Join an active guild as soon as possible</strong> - Guilds offer protection, resources, and guidance</li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- Building Section -->
+    <section id="building" class="container">
+        <h2 class="section-title">Building Your <span>Kingdom</span></h2>
+        
+        <div class="guide-section animated">
+            <h3>Essential Buildings</h3>
+            <p>Focus on upgrading these buildings first to establish a strong foundation for your kingdom:</p>
+            
+            <table class="resource-table">
+                <tr>
+                    <th>Building</th>
+                    <th>Importance</th>
+                    <th>Priority</th>
+                </tr>
+                <tr>
+                    <td>Keep</td>
+                    <td>Increases overall level and unlocks features</td>
+                    <td>High</td>
+                </tr>
+                <tr>
+                    <td>Barracks</td>
+                    <td>Trains infantry troops</td>
+                    <td>High</td>
+                </tr>
+                <tr>
+                    <td>Range</td>
+                    <td>Trains ranged troops</td>
+                    <td>High</td>
+                </tr>
+                <tr>
+                    <td>Stable</td>
+                    <td>Trains cavalry troops</td>
+                    <td>High</td>
+                </tr>
+                <tr>
+                    <td>Workshop</td>
+                    <td>Builds siege machines</td>
+                    <td>Medium</td>
+                </tr>
+                <tr>
+                    <td>Hospital</td>
+                    <td>Heals wounded troops</td>
+                    <td>High</td>
+                </tr>
+                <tr>
+                    <td>Vault</td>
+                    <td>Protects resources from attackers</td>
+                    <td>High</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="guide-section animated">
+            <h3>Construction Strategy</h3>
+            <p>Upgrade your buildings strategically with these proven techniques:</p>
+            <ul>
+                <li>Always have a building upgrading - use speed ups if available to maximize efficiency</li>
+                <li>Focus on your Keep first - higher level keeps unlock more features and buildings</li>
+                <li>Upgrade resource buildings evenly to maintain a balanced economy</li>
+                <li>Don't neglect your walls - they provide defensive bonuses and can deter attackers</li>
+                <li>Use the "Master's Blueprint" item for expensive building upgrades to save resources</li>
+                <li>Time your upgrades with "Mightiest Governor" events for additional rewards</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Troops Section -->
+    <section id="troops" class="container">
+        <h2 class="section-title">Troops & <span>Combat</span></h2>
+        
+        <div class="guide-section animated">
+            <h3>Understanding Troop Types</h3>
+            <p>Master the rock-paper-scissors combat system of Lord's Mobile with these troop types:</p>
+            
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4>Infantry</h4>
+                    <p>Strong against cavalry, weak against ranged troops. Best for defending against cavalry attacks.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-horse"></i>
+                    </div>
+                    <h4>Cavalry</h4>
+                    <p>Strong against ranged, weak against infantry. Excellent for attacking ranged formations.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-bow-arrow"></i>
+                    </div>
+                    <h4>Ranged</h4>
+                    <p>Strong against infantry, weak against cavalry. Perfect for countering infantry armies.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-hat-cowboy"></i>
+                    </div>
+                    <h4>Siege</h4>
+                    <p>Used for attacking castles, weak in direct combat. Essential for reducing castle durability.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="guide-section animated">
+            <h3>Advanced Training Strategy</h3>
+            <p>Follow these tips for training and maintaining a powerful army:</p>
+            <ul>
+                <li>Focus on one troop type initially (recommend infantry or ranged for beginners)</li>
+                <li>Always keep your training queues active to continuously grow your army</li>
+                <li>Research military technologies to significantly improve troop stats and effectiveness</li>
+                <li>Use troop training speed boosts during events to maximize efficiency</li>
+                <li>Maintain a balanced army composition as you progress to handle different threats</li>
+                <li>Keep troops sheltered when offline to protect them from attacks</li>
+                <li>Use the infirmary to heal wounded troops instead of retraining new ones</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="resources" class="container">
+        <h2 class="section-title">Resource <span>Management</span></h2>
+        
+        <div class="guide-section animated">
+            <h3>Key Resources</h3>
+            <p>Effectively manage these essential resources to maintain a thriving kingdom:</p>
+            
+            <table class="resource-table">
+                <tr>
+                    <th>Resource</th>
+                    <th>How to Obtain</th>
+                    <th>Advanced Tips</th>
+                </tr>
+                <tr>
+                    <td>Food</td>
+                    <td>Farms, hunting, quests, gathering</td>
+                    <td>Keep low stocks to avoid being raided. Use food boosts for training periods.</td>
+                </tr>
+                <tr>
+                    <td>Wood</td>
+                    <td>Lumberyard, gathering, quests</td>
+                    <td>Always have production ongoing. Upgrade lumber mills during wood events.</td>
+                </tr>
+                <tr>
+                    <td>Stone</td>
+                    <td>Quarry, gathering, quests</td>
+                    <td>Upgrade quarry early. Stone is crucial for building upgrades.</td>
+                </tr>
+                <tr>
+                    <td>Ore</td>
+                    <td>Mine, gathering, quests</td>
+                    <td>Important for later game upgrades. Focus on ore production mid-game.</td>
+                </tr>
+                <tr>
+                    <td>Gold</td>
+                    <td>Vault, quests, battles, events</td>
+                    <td>Protect in your vault. Gold is essential for research and high-level troops.</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="guide-section animated">
+            <h3>Advanced Resource Strategies</h3>
+            <ul>
+                <li>Upgrade your resource production buildings evenly to maintain balanced production</li>
+                <li>Use resource boosts during special events to maximize gathering efficiency</li>
+                <li>Gather from resource tiles on the world map regularly - higher level tiles yield more resources</li>
+                <li>Complete daily quests for resource rewards and event items</li>
+                <li>Join a guild with resource help benefits and resource exchange programs</li>
+                <li>Time your resource spending with events that offer rewards for spending resources</li>
+                <li>Use multiple resource alt accounts (farm accounts) to feed your main account</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section id="tips" class="container">
+        <h2 class="section-title">Pro Tips & <span>Strategies</span></h2>
+        
+        <div class="guide-section animated">
+            <h3>Essential Beginner to Advanced Tips</h3>
+            
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4>Join a Guild</h4>
+                    <p>Guilds provide protection, resources, and help with construction. Active guilds also offer valuable advice and support.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4>Use Peace Shield</h4>
+                    <p>Activate peace shields when offline for extended periods to protect your kingdom from attacks.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h4>Complete Quests</h4>
+                    <p>Daily quests provide valuable rewards and experience. Event quests offer rare items and resources.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h4>Save Gems</h4>
+                    <p>Don't waste gems on unnecessary items. Save for important upgrades like additional builders and research.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="guide-section animated">
+            <h3>Frequently Asked Questions</h3>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What should I spend gems on as a beginner?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>As a beginner, focus on spending gems on these priorities: 1) Builder hut (second construction queue), 2) Important research that requires gems, 3) VIP level upgrades for permanent benefits, 4) Essential building upgrades during events. Avoid spending gems on speeding up construction or training unless during special events that offer additional rewards for doing so.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How can I protect my resources from attackers?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Use these strategies to protect your resources: 1) Use your vault to protect resources - upgrade it regularly, 2) Keep resource levels low by spending them on upgrades, 3) Use peace shields when offline for extended periods, 4) Join a strong guild for protection and shelter, 5) Shelter your troops when attacked to minimize losses, 6) Use the resource warehouse to store extra resources during events.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What is the best way to increase my power quickly?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>To increase your power quickly: 1) Focus on building and research upgrades - they contribute significantly to might, 2) Train troops consistently - larger armies increase your might, 3) Complete all daily quests and events for rewards and boost items, 4) Join an active guild for help and bonuses, 5) Use speed ups strategically during boost events, 6) Focus on hero development and gear crafting for additional stats, 7) Participate in kingdom events for rare rewards and items.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>LordsMastery</h3>
+                    <p>Your complete resource for mastering Lord's Mobile. From beginner tips to advanced strategies, we've got you covered.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-reddit-alien"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#basics">Beginner Guide</a></li>
+                        <li><a href="#building">Building Strategies</a></li>
+                        <li><a href="#troops">Troop Guides</a></li>
+                        <li><a href="#resources">Resource Management</a></li>
+                        <li><a href="#tips">Pro Tips</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Game Resources</h3>
+                    <ul>
+                        <li><a href="#">Hero Guide</a></li>
+                        <li><a href="#">Gear Crafting</a></li>
+                        <li><a href="#">Research Priorities</a></li>
+                        <li><a href="#">Event Calendar</a></li>
+                        <li><a href="#">Guild Management</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Help Center</h3>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 LordsMastery.com - This site is not officially affiliated with Lord's Mobile or IGG. All game content and trademarks are property of their respective owners.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ toggle functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('i');
+                
+                if (answer.style.display === 'block') {
+                    answer.style.display = 'none';
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                } else {
+                    answer.style.display = 'block';
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                }
+            });
+        });
+        
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            const nav = document.querySelector('nav ul');
+            if (nav.style.display === 'flex') {
+                nav.style.display = 'none';
+            } else {
+                nav.style.display = 'flex';
+                nav.style.flexDirection = 'column';
+                nav.style.position = 'absolute';
+                nav.style.top = '100%';
+                nav.style.left = '0';
+                nav.style.right = '0';
+                nav.style.background = 'rgba(26, 26, 46, 0.95)';
+                nav.style.padding = '20px';
+            }
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a, .btn').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const nav = document.querySelector('nav ul');
+                    if (window.innerWidth <= 768) {
+                        nav.style.display = 'none';
+                    }
+                }
+            });
+        });
+        
+        // Progress bar
+        window.onscroll = function() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById("progressBar").style.width = scrolled + "%";
+        };
+        
+        // Animation on scroll
+        function checkScroll() {
+            const elements = document.querySelectorAll('.guide-section, .tip-card');
+            elements.forEach(element => {
+                const position = element.getBoundingClientRect();
+                if (position.top < window.innerHeight - 100) {
+                    element.classList.add('animated');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('load', checkScroll);
+    </script>
+</body>
+</html>
